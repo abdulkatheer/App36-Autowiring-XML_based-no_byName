@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- autowire=no means, we should do explicit wiring -->
+    <bean id="add1" class="org.katheer.bean.Address">
+        <property name="firstLine" value="4/167, Akshaya Nagar"/>
+        <property name="secondLine" value="Seelapadi PO, Dindigul"/>
+        <property name="pin" value="624005"/>
+    </bean>
+    <bean id="acc1" class="org.katheer.bean.Account">
+        <property name="accNo" value="SS101"/>
+        <property name="branch" value="Dindigul"/>
+        <property name="bank" value="IOB"/>
+        <property name="balance" value="6381933"/>
+    </bean>
+    <bean id="emp1" class="org.katheer.bean.Employee" autowire="no">
+        <property name="ename" value="Abdul Katheer"/>
+        <property name="eid" value="E101"/>
+        <property name="esal" value="870000"/>
+        <property name="address" ref="add1"/>
+        <property name="account" ref="acc1"/>
+    </bean>
+
+    <!-- autowire=byName means, property name in class and bean id name in App Context should match -->
+    <bean id="address" class="org.katheer.bean.Address">
+        <property name="firstLine" value="4/167, Akshaya Nagar"/>
+        <property name="secondLine" value="Seelapadi PO, Dindigul"/>
+        <property name="pin" value="624005"/>
+    </bean>
+    <bean id="account" class="org.katheer.bean.Account">
+        <property name="accNo" value="SS101"/>
+        <property name="branch" value="Dindigul"/>
+        <property name="bank" value="IOB"/>
+        <property name="balance" value="6381933"/>
+    </bean>
+    <bean id="emp2" class="org.katheer.bean.Employee" autowire="byName">
+        <property name="ename" value="Abdul Katheer"/>
+        <property name="eid" value="E101"/>
+        <property name="esal" value="870000"/>
+    </bean>
+</beans>
